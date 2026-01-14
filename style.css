@@ -349,72 +349,20 @@ ul {
 .clientele_container img {
     width: 120px;
 }
+/* Latest work */
 
-/* Swipper */
-
-.slider-container {
-    width: 80%;
-    margin: 3rem auto;
-    position: relative;
-    padding: 40px 0; 
-}
-
-.swiper {
-    width: 100%;
-    height: 900px;
-}
-
-.swiper-slide {
-  width: 100%;
-  height: 100%;
+.latest work {
     display: flex;
-    align-items: center;
     justify-content: center;
+    gap: 4rem;
+    margin: 4rem 0;
+    padding: 2rem;
 }
 
-.swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.latest work img {
+    width: 250px;
 }
 
-
-
-/* Pagination (Dots) */
-.swiper-pagination {
-    position: absolute;
-    bottom: -30px; /* Moves dots outside */
-}
-
-.lightbox {
-  display: none;  /* Hidden by default */
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-}
-
-.lightbox-content {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 40px;
-  color: white;
-  cursor: pointer;
-}
 
 
 /* DESIGN */
@@ -982,5 +930,6 @@ footer {
     }
 
   }
+
 
 

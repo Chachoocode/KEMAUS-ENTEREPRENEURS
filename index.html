@@ -314,38 +314,108 @@ with outstanding customer service
         
       </div>
     </section>
- <section class="container">
+<h2>My Recent Projects</h2>
 
-      <div class="latest work">
-        <div class="title" data-aos="fade-down" data-aos-duration="1000">
-        <h2>Our Latest Work</h2>
-        <p>Check out some of our latest projects.</p>
-      </div>
-       
-            <div class="latest work"><img src="./1.jpeg" alt="Image 1" </div>
-            <div class="latest work"><img src="./11.jpeg" alt="Image 2"</div>
-            <div class="latest work"><img src="/12.jpeg" alt="Image 3" </div>
-            <div class="latest work"><img src="./111.jpeg" alt="Image 4" </div>
-            <div class="latest work"><img src="./121.jpeg" alt="Image 5" </div>
-            <div class="latest work"><img src="./1212.jpeg" alt="Image 6" </div>
-            <div class="latest work"><img src="./embroi.jpeg" alt="Image 7" </div>
-            <div class="latest work"><img src="./GCS.jpeg" alt="Image 8"</div>
-            <div class="latest work"><img src="./LL.jpeg" alt="Image 9" </div>
-            <div class="latest work"><img src="./manzil.jpeg" alt="Image 10" </div>
-            <div class="latest work"><img src="./NTHG.jpeg" alt="Image 11" </div>
-            <div class="latest work"><img src="./ntbkspens.jpeg" alt="Image 12" </div>
-            <div class="latest work"><img src="./SAAA.jpeg" alt="Image 13" </div>
-          <div class="latest work"><img src="./FT.jpeg" alt="Image 13" </div>
-        <div class="latest work"><img src="./SEF.jpeg" alt="Image 13"</div>
-        <div class="latest work"><img src="./SSSSSSA.jpeg" alt="Image 13" </div>
-        <div class="latest work"><img src=".table/.jpeg" alt="Image 13" </div>
-        <div class="latest work"><img src="./ZD.jpg" alt="Image 13" </div>
-        
-        </div>
+<div class="gallery" id="project-gallery">
+  <!-- You can generate these dynamically -->
+  <div class="gallery-item" data-index="0"><img src="./FT.jpeg" alt="Project 1"></div>
+  <div class="gallery-item" data-index="1"><img src="https://images.unsplash.com/photo-1551650975-60cb5d043c16?w=800" alt="Project 2"></div>
+  <div class="gallery-item" data-index="2"><img src="https://images.unsplash.com/photo-1551288049-b1f7c97b7294?w=800" alt="Project 3"></div>
+  <div class="gallery-item" data-index="3"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800" alt="Project 4"></div>
+  <div class="gallery-item" data-index="4"><img src="https://images.unsplash.com/photo-1516321310764-9f3c9619d7d7?w=800" alt="Project 5"></div>
+</div>
+
+<!-- ─── Lightbox ─────────────────────────────────────── -->
+<div id="lightbox" class="swiper-lightbox" style="display:none;">
+  <button class="swiper-lightbox-close">×</button>
+  <div class="swiper lightbox-swiper">
+    <div class="swiper-wrapper">
+      <!-- Swiper will fill these slides dynamically or you can pre-fill them -->
     </div>
-      </div>
-  </section>
-  
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+// ─── Lightbox Logic ─────────────────────────────────────
+const gallery = document.getElementById('project-gallery');
+const lightbox = document.getElementById('lightbox');
+const closeBtn  = document.querySelector('.swiper-lightbox-close');
+let swiper = null;
+
+function openLightbox(startIndex) {
+  lightbox.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+
+  // If swiper already exists → destroy it first
+  if (swiper) swiper.destroy(true, true);
+
+  const wrapper = lightbox.querySelector('.swiper-wrapper');
+  wrapper.innerHTML = ''; // clear previous slides
+
+  // Create slides from gallery images
+  const images = gallery.querySelectorAll('img');
+  images.forEach(img => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide lightbox-slide';
+    slide.innerHTML = `<img src="${img.src}" alt="${img.alt || 'Project image'}">`;
+    wrapper.appendChild(slide);
+  });
+
+  swiper = new Swiper('.lightbox-swiper', {
+    initialSlide: startIndex,
+    loop: true,
+    zoom: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    keyboard: {
+      enabled: true,
+    },
+    mousewheel: {
+      enabled: true,
+    }
+  });
+}
+
+function closeLightbox() {
+  lightbox.style.display = 'none';
+  document.body.style.overflow = '';
+  if (swiper) {
+    swiper.destroy(true, true);
+    swiper = null;
+  }
+}
+
+// Open lightbox when clicking any gallery item
+gallery.addEventListener('click', e => {
+  const item = e.target.closest('.gallery-item');
+  if (!item) return;
+  const index = parseInt(item.dataset.index);
+  openLightbox(index);
+});
+
+// Close lightbox
+closeBtn.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+// Close with Escape key
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && lightbox.style.display === 'block') {
+    closeLightbox();
+  }
+});
+</script>
+
+</body>
+</html>
     <section class="design container">
       <div class="design-container">
 
@@ -524,6 +594,7 @@ with outstanding customer service
   </body>
 
 </html>
+
 
 
 

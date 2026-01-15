@@ -349,21 +349,107 @@ ul {
 .clientele_container img {
     width: 120px;
 }
-/* Latest work */
-
-.latest work {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    margin: 4rem 0;
-    padding: 2rem;
+/* === Project Gallery Thumbnails === */
+.project-gallery {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0 15px;
 }
 
-.latest work img {
-    width: 250px;
+.project-gallery .gallery-item {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
+.project-gallery .gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
 
+.project-gallery .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* === Lightbox / Fullscreen Swiper === */
+#project-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.96);
+  backdrop-filter: blur(4px);
+}
+
+.lightbox-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.lightbox-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+
+.lightbox-slide img {
+  max-width: 96%;
+  max-height: 96vh;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+/* Close button */
+#lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  z-index: 10000;
+  width: 50px;
+  height: 50px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+#lightbox-close:hover {
+  background: #dc2626;
+}
+
+/* Navigation arrows (optional styling) */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ddd !important;
+  background: rgba(30,30,50,0.5) !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  backdrop-filter: blur(4px);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px !important;
+}
 
 /* DESIGN */
 .design {
@@ -930,6 +1016,7 @@ footer {
     }
 
   }
+
 
 
 
